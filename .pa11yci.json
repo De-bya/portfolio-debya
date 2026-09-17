@@ -7,11 +7,11 @@
     }
   },
   "urls": [
-    "http://localhost:4321/portfolio/",
-    "http://localhost:4321/portfolio/about/",
-    "http://localhost:4321/portfolio/education/",
-    "http://localhost:4321/portfolio/career/",
-    "http://localhost:4321/portfolio/projects/",
-    "http://localhost:4321/portfolio/certificates/"
+    "http://localhost:4321/portfolio-debya/",
+    "http://localhost:4321/portfolio-debya/about/",
+    "http://localhost:4321/portfolio-debya/education/",
+    "http://localhost:4321/portfolio-debya/career/",
+    "http://localhost:4321/portfolio-debya/projects/",
+    "http://localhost:4321/portfolio-debya/certificates/"
   ]
 }
