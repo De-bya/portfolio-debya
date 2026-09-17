@@ -30,7 +30,8 @@ export const careerEntries: CareerEntry[] = [
   },
   {
     title: "Stagiaire Data Science",
-    organization: "Agence Nationale de la Statistique et de l'Analyse Démographique et Économique (ANSADE)",
+    organization:
+      "Agence Nationale de la Statistique et de l'Analyse Démographique et Économique (ANSADE)",
     dateRange: "Juin 2022 - Juillet 2022",
     bullets: [
       "Analyse de la balance commerciale de la Mauritanie (2006-2021) sous Stata et R, tests d'hypothèses (test t) et visualisations (PCA, séries temporelles) pour comparer les performances commerciales sur trois mandats présidentiels, restituées à des interlocuteurs non-techniques.",

@@ -20,7 +20,8 @@ export const educationEntries: educationEntry[] = [
   },
   {
     title: "Diplôme d'Ingénieur d'État en Génie de la Data",
-    organization: "École Nationale Supérieure d'Informatique et d'Analyse des Systèmes (ENSIAS)",
+    organization:
+      "École Nationale Supérieure d'Informatique et d'Analyse des Systèmes (ENSIAS)",
     dateRange: "2023 - 2025",
     description: ["Rabat, Maroc."],
   },
@@ -32,7 +33,8 @@ export const educationEntries: educationEntry[] = [
   },
   {
     title: "Classes Préparatoires aux Grandes Écoles d'Ingénieurs (MPSI/MP)",
-    organization: "IPEGI - Institut Préparatoire aux Grandes Écoles d'Ingénieurs",
+    organization:
+      "IPEGI - Institut Préparatoire aux Grandes Écoles d'Ingénieurs",
     dateRange: "2019 - 2021",
     description: ["Nouakchott, Mauritanie."],
   },

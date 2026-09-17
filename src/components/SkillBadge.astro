@@ -20,10 +20,7 @@ const { label, icon, iconType = "iconify" } = Astro.props;
           class="skill-icon w-10 h-10 object-contain"
         />
       ) : (
-        <Icon
-          name={icon}
-          class="skill-icon w-10 h-10 object-contain"
-        />
+        <Icon name={icon} class="skill-icon w-10 h-10 object-contain" />
       )}
       <span class="text-xs text-dark-text-muted mt-2 text-center leading-tight px-1">
         {label}

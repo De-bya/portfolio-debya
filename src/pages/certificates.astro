@@ -18,10 +18,7 @@ const yearGroupOffsets = certificatesByYear.map((yg) => {
 });
 ---
 
-<BaseLayout
-  title="Debya Ahmed Salem - Certificates"
-  activePage="certificates"
->
+<BaseLayout title="Debya Ahmed Salem - Certificates" activePage="certificates">
   <div class="max-w-7xl mx-auto px-4 mt-3">
     <h1
       class="text-center text-3xl md:text-4xl font-medium text-dark-text mb-1"
@@ -45,40 +42,52 @@ const yearGroupOffsets = certificatesByYear.map((yg) => {
                     </h5>
                     {cert.richIssuer ? (
                       <p class="text-sm text-dark-text-muted flex items-center justify-center gap-2">
-                        {cert.logos ? (
-                          cert.logos.map((l) => (
-                            <img
-                              src={`${import.meta.env.BASE_URL}${l}`}
-                              alt={cert.issuer}
-                              class:list={[cert.logoSize || "w-8 h-8", "rounded object-contain bg-white px-0.5 py-0.5"]}
-                            />
-                          ))
-                        ) : cert.logo && (
-                          <img
-                            src={`${import.meta.env.BASE_URL}${cert.logo}`}
-                            alt={cert.issuer}
-                            class:list={[cert.logoSize || "w-8 h-8", "rounded object-contain bg-white px-0.5 py-0.5"]}
-                          />
-                        )}
+                        {cert.logos
+                          ? cert.logos.map((l) => (
+                              <img
+                                src={`${import.meta.env.BASE_URL}${l}`}
+                                alt={cert.issuer}
+                                class:list={[
+                                  cert.logoSize || "w-8 h-8",
+                                  "rounded object-contain bg-white px-0.5 py-0.5",
+                                ]}
+                              />
+                            ))
+                          : cert.logo && (
+                              <img
+                                src={`${import.meta.env.BASE_URL}${cert.logo}`}
+                                alt={cert.issuer}
+                                class:list={[
+                                  cert.logoSize || "w-8 h-8",
+                                  "rounded object-contain bg-white px-0.5 py-0.5",
+                                ]}
+                              />
+                            )}
                         <span set:html={cert.richIssuer} />
                       </p>
                     ) : (
                       <p class="text-sm mt-1 mb-2 text-dark-text-muted flex items-center justify-center gap-2">
-                        {cert.logos ? (
-                          cert.logos.map((l) => (
-                            <img
-                              src={`${import.meta.env.BASE_URL}${l}`}
-                              alt={cert.issuer}
-                              class:list={[cert.logoSize || "w-8 h-8", "rounded object-contain bg-white px-0.5 py-0.5"]}
-                            />
-                          ))
-                        ) : cert.logo && (
-                          <img
-                            src={`${import.meta.env.BASE_URL}${cert.logo}`}
-                            alt={cert.issuer}
-                            class:list={[cert.logoSize || "w-8 h-8", "rounded object-contain bg-white px-0.5 py-0.5"]}
-                          />
-                        )}
+                        {cert.logos
+                          ? cert.logos.map((l) => (
+                              <img
+                                src={`${import.meta.env.BASE_URL}${l}`}
+                                alt={cert.issuer}
+                                class:list={[
+                                  cert.logoSize || "w-8 h-8",
+                                  "rounded object-contain bg-white px-0.5 py-0.5",
+                                ]}
+                              />
+                            ))
+                          : cert.logo && (
+                              <img
+                                src={`${import.meta.env.BASE_URL}${cert.logo}`}
+                                alt={cert.issuer}
+                                class:list={[
+                                  cert.logoSize || "w-8 h-8",
+                                  "rounded object-contain bg-white px-0.5 py-0.5",
+                                ]}
+                              />
+                            )}
                         <span>{cert.issuer}</span>
                         {cert.certificateImage && (
                           <img

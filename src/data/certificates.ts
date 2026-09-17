@@ -56,7 +56,7 @@ export const certificatesByYear: CertificateYear[] = [
       {
         title: "AWS Academy Graduate - Machine Learning Foundations",
         issuer: "Amazon Web Services",
-        logo: "public/logos/aws.png",        
+        logo: "public/logos/aws.png",
         link: "https://www.credly.com/badges/ba0a10b6-a4fc-4069-a553-044b69bbbb33",
         isLocal: false,
       },
@@ -70,7 +70,7 @@ export const certificatesByYear: CertificateYear[] = [
       {
         title: "AWS Academy Graduate - Cloud Data Pipeline Builder",
         issuer: "Amazon Web Services",
-        logo: "public/logos/aws.png", 
+        logo: "public/logos/aws.png",
         link: "https://www.credly.com/badges/84e5f802-d40f-4a6d-b5bc-9fe418eb27c2",
         isLocal: false,
       },
@@ -84,7 +84,7 @@ export const certificatesByYear: CertificateYear[] = [
       {
         title: "AWS Academy Graduate - Data Engineering",
         issuer: "Amazon Web Services",
-        logo: "public/logos/aws.png", 
+        logo: "public/logos/aws.png",
         link: "https://www.credly.com/badges/ac208606-44b0-453c-a45b-9fe7ea6b411e",
         isLocal: false,
       },
