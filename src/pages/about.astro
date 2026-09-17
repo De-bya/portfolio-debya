@@ -1,0 +1,120 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Card from "../components/Card.astro";
+import SkillBadge from "../components/SkillBadge.astro";
+import CertificationBadge from "../components/CertificationBadge.astro";
+import {
+  domains,
+  technologies,
+  languages,
+  publications,
+  featuredCertifications,
+} from "../data/skills";
+import { Icon } from "astro-icon/components";
+---
+
+<BaseLayout title="Debya Ahmed Salem - About" activePage="about">
+  <div class="max-w-7xl mx-auto px-4 mt-6">
+    <div class="flex justify-center">
+      <div class="w-full md:w-2/3">
+        <Card>
+          <div class="text-center">
+            <h1 class="text-4xl md:text-5xl font-medium text-dark-text">
+              Debya Ahmed Salem
+            </h1>
+            <p class="text-lg md:text-xl text-dark-text-secondary mt-1">
+              Data Scientist | AI/ML Engineer
+            </p>
+            {
+              featuredCertifications.map((cert) => (
+                <CertificationBadge
+                  text={cert.text}
+                  badgeUrl={cert.badgeUrl}
+                  certificateUrl={cert.certificateUrl}
+                  badgeAlt={cert.badgeAlt}
+                  textSize={cert.textSize}
+                />
+              ))
+            }
+            <h2 class="text-left text-lg font-bold text-dark-text mt-4">
+              About
+            </h2>
+            <p class="text-justify text-dark-text-secondary">
+              I'm currently a Master 2 student in Artificial Intelligence and
+              Data Science, looking for an end-of-studies internship (PFE). I
+              hold two engineering degrees: one in Data Engineering from{" "}
+              <a href="https://ensias.um5.ac.ma/page/g%C3%A9nie-de-la-data-gd" target="_blank" rel="noopener noreferrer" class="underline text-dark-accent hover:text-dark-text">ENSIAS</a>, and one in Statistics and Data Engineering from{" "}
+              <a href="https://www.esp.mr/formation/sid" target="_blank" rel="noopener noreferrer" class="underline text-dark-accent hover:text-dark-text">ESP</a>. Along the way, I've worked on projects spanning data
+              engineering, machine learning, and LLM-based systems, from ETL
+              pipelines to RAG applications. I'm very motivated to build a
+              solid career in a domain that truly passionates me, and I'm
+              always looking to learn new tools and take on new challenges.
+            </p>
+          </div>
+        </Card>
+      </div>
+    </div>
+
+    <div class="flex justify-center">
+      <div class="w-full md:w-2/3">
+        <Card class="mt-3">
+          <div class="text-center">
+            <h2 class="text-2xl font-semibold text-dark-text">Skills</h2>
+
+            <h3 class="text-lg font-medium text-dark-text-secondary mt-4 mb-2">
+              Domains & Expertise
+            </h3>
+            <div>
+              {
+                domains.map((skill) => (
+                  <SkillBadge
+                    label={skill.label}
+                    icon={skill.icon}
+                    iconType={skill.iconType}
+                  />
+                ))
+              }
+            </div>
+
+            <h3 class="text-lg font-medium text-dark-text-secondary mt-6 mb-2">
+              Technologies & Tools
+            </h3>
+            <div class="flex flex-wrap justify-center">
+              {
+                technologies.map((skill) => (
+                  <SkillBadge
+                    label={skill.label}
+                    icon={skill.icon}
+                    iconType={skill.iconType}
+                  />
+                ))
+              }
+            </div>
+          </div>
+        </Card>
+      </div>
+    </div>
+
+
+        </Card>
+      </div>
+    </div>
+
+    <div class="flex justify-center">
+      <div class="w-full md:w-2/3">
+        <Card class="mt-3">
+          <div class="text-center">
+            <h2 class="text-2xl font-semibold text-dark-text">Languages</h2>
+            <div class="mt-3">
+              {
+                languages.map((lang) => (
+                  <SkillBadge label={`${lang.flag} ${lang.name}`} />
+                ))
+              }
+            </div>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

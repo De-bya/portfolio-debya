@@ -1,0 +1,29 @@
+<svg width="64" height="64" viewBox="10 4 44 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="kg-gradient" x1="10" y1="4" x2="54" y2="52" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Connections -->
+  <path d="M18 20L32 12L46 20L46 36L32 44L18 36L18 20Z"
+        stroke="url(#kg-gradient)"
+        stroke-width="4"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <path d="M32 12V44M18 20L46 36M46 20L18 36"
+        stroke="url(#kg-gradient)"
+        stroke-width="3"
+        stroke-linecap="round"
+        opacity="0.9"/>
+
+  <!-- Nodes -->
+  <circle cx="32" cy="12" r="5" fill="url(#kg-gradient)"/>
+  <circle cx="18" cy="20" r="5" fill="url(#kg-gradient)"/>
+  <circle cx="46" cy="20" r="5" fill="url(#kg-gradient)"/>
+  <circle cx="18" cy="36" r="5" fill="url(#kg-gradient)"/>
+  <circle cx="46" cy="36" r="5" fill="url(#kg-gradient)"/>
+  <circle cx="32" cy="44" r="5" fill="url(#kg-gradient)"/>
+</svg>

@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Card from "../components/Card.astro";
+---
+
+<BaseLayout title="404 - Page Not Found" activePage="home">
+  <div class="max-w-7xl mx-auto px-4 mt-3">
+    <div class="flex justify-center">
+      <div class="w-full md:w-2/3">
+        <Card>
+          <div class="text-center">
+            <h1 class="text-dark-text">404</h1>
+            <p class="text-dark-text-secondary">Page Not Found</p>
+            <a
+              href={import.meta.env.BASE_URL}
+              class="inline-block mt-4 bg-dark-card border border-dark-border text-dark-text px-6 py-2 rounded transition-all duration-300 hover:bg-dark-accent hover:border-dark-accent hover:text-dark-bg hover:-translate-y-0.5 no-underline"
+            >
+              Go Home
+            </a>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

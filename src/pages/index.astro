@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { intro, socialLinks } from "../data/intro";
+import { Icon } from "astro-icon/components";
+---
+
+<BaseLayout title="Debya Ahmed Salem - Portfolio" activePage="home">
+  <div class="min-h-[calc(100vh-56px-60px)] flex items-center">
+    <div class="max-w-7xl mx-auto px-4 w-full">
+      <div
+        class="flex flex-col-reverse md:flex-row items-center justify-between gap-10"
+      >
+        <!-- Text content -->
+        <div
+          class="text-center md:text-left md:w-1/2 opacity-0 translate-y-5 animate-fadeInUp"
+        >
+          <h1
+            class="text-3xl md:text-5xl font-bold text-dark-text leading-tight"
+          >
+            {intro.name}
+          </h1>
+          <p class="text-xl md:text-2xl text-dark-accent mt-3">
+            {intro.title}
+          </p>
+          <div
+            class="flex items-center gap-4 mt-6 justify-center md:justify-start"
+          >
+            {
+              socialLinks.map((link) => (
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.label}
+                  class="text-dark-text hover:text-dark-accent transition-colors duration-300"
+                >
+                  <Icon name={link.icon} class="w-6 h-6" />
+                </a>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Profile photo -->
+        <div
+          class="md:w-1/2 flex justify-center md:pl-8 opacity-0 translate-y-5 animate-fadeInUp"
+        >
+          <img
+            src={`${import.meta.env.BASE_URL}IMG_0967.JPG`}
+            alt="Debya Ahmed Salem"
+            class="w-56 h-56 md:w-72 md:h-72 rounded-full object-cover shadow-lg border-2 border-dark-accent"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

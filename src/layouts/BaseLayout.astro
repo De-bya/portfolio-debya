@@ -1,0 +1,62 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import ScrollToTop from "../components/ScrollToTop.astro";
+import ParticleNetwork from "../components/ParticleNetwork.astro";
+import "../styles/timeline.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  activePage: string;
+}
+
+const {
+  title,
+  description = "Portfolio of Debya Ahmed Salem - Data Scientist and AI/ML Engineer",
+  activePage,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href={`${import.meta.env.BASE_URL}favicon.svg`}
+    />
+    <link
+      rel="alternate icon"
+      type="image/x-icon"
+      href={`${import.meta.env.BASE_URL}favicon.ico`}
+    />
+    <ViewTransitions />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PC75KPG2LB"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-PC75KPG2LB");
+    </script>
+  </head>
+  <body
+    class="min-h-screen m-0 pt-14 w-full font-sans bg-dark-bg text-dark-text overflow-x-hidden flex flex-col"
+  >
+    <ParticleNetwork />
+    <Navbar activePage={activePage} />
+    <main class="flex-1 pb-4 relative z-10">
+      <slot />
+    </main>
+    <Footer />
+    <ScrollToTop />
+  </body>
+</html>

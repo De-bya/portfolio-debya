@@ -1,0 +1,45 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  text: string;
+  badgeUrl?: string;
+  certificateUrl?: string;
+  badgeAlt?: string;
+  textSize?: string;
+}
+
+const {
+  text,
+  badgeUrl,
+  certificateUrl,
+  badgeAlt,
+  textSize = "text-lg md:text-xl",
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const resolveUrl = (url?: string) =>
+  url?.startsWith("/") ? `${base}${url.slice(1)}` : url;
+---
+
+<p
+  class:list={[
+    textSize,
+    "text-dark-accent mt-1 flex items-center justify-center gap-2",
+  ]}
+>
+  {text}
+  {
+    badgeUrl && certificateUrl && (
+      <a
+        href={resolveUrl(certificateUrl)}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`View ${text} certificate`}
+        class="inline-block text-dark-text-secondary hover:text-dark-accent transition-colors duration-200"
+      >
+        <Icon name="bi:award-fill" class="w-6 h-6 inline-block" />
+      </a>
+    )
+  }
+</p>

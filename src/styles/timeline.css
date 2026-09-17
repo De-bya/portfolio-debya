@@ -1,0 +1,249 @@
+/* Timeline layout variables */
+:root {
+  --tl-card-width: 310px;
+  --tl-gap: 30px;
+  --tl-dot-size: 12px;
+  --tl-arrow-size: 10px;
+}
+
+/* Timeline Alternating: Left/Right Positioning */
+.timeline-item.left {
+  left: calc(50% - var(--tl-card-width) - var(--tl-gap));
+}
+
+.timeline-item.right {
+  left: calc(50% + var(--tl-gap));
+}
+
+/* Timeline Alternating: Card sizing */
+.timeline-item .card-timeline {
+  position: relative;
+  width: 100%;
+  max-width: var(--tl-card-width);
+  z-index: 6;
+}
+
+/* Dot positions on center line */
+.dot-left {
+  left: calc(var(--tl-card-width) + var(--tl-gap) - var(--tl-dot-size) / 2);
+}
+
+.dot-right {
+  left: calc(-1 * (var(--tl-gap) + var(--tl-dot-size) / 2));
+}
+
+/* Card shadow using drop-shadow so it wraps around the arrow */
+.timeline-item .card-timeline {
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  transition:
+    filter 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.timeline-item .card-timeline:hover {
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+}
+
+/* Card arrows as part of the card element */
+.timeline-item.left .card-timeline::before,
+.timeline-item.right .card-timeline::before {
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 20%;
+  border-style: solid;
+  transform: translateY(-50%);
+  transition: border-color 0.3s ease;
+}
+
+.timeline-item.left .card-timeline::before {
+  right: calc(-1 * var(--tl-arrow-size));
+  border-width: var(--tl-arrow-size) 0 var(--tl-arrow-size) var(--tl-arrow-size);
+  border-color: transparent transparent transparent #1a1a1a;
+}
+
+.timeline-item.right .card-timeline::before {
+  left: calc(-1 * var(--tl-arrow-size));
+  border-width: var(--tl-arrow-size) var(--tl-arrow-size) var(--tl-arrow-size) 0;
+  border-color: transparent #1a1a1a transparent transparent;
+}
+
+/* Arrow color changes on hover */
+.timeline-item.left .card-timeline:hover::before {
+  border-color: transparent transparent transparent #222222;
+}
+
+.timeline-item.right .card-timeline:hover::before {
+  border-color: transparent #222222 transparent transparent;
+}
+
+/* Vertical timeline: no arrows */
+.timeline-vertical .timeline-item::before,
+.timeline-vertical .timeline-item::after {
+  display: none;
+}
+
+/* Career accordion: hide default marker */
+.career-accordion summary::-webkit-details-marker,
+.career-accordion summary::marker {
+  display: none;
+}
+
+/* Career accordion: chevron rotation */
+.career-accordion[open] .career-chevron {
+  transform: rotate(180deg);
+}
+
+/* Career accordion: smooth expand/collapse */
+.career-accordion-body {
+  overflow: hidden;
+  animation: accordion-close 0.3s ease forwards;
+}
+
+.career-accordion[open] .career-accordion-body {
+  animation: accordion-open 0.3s ease forwards;
+}
+
+@keyframes accordion-open {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 2000px;
+  }
+}
+
+@keyframes accordion-close {
+  from {
+    opacity: 1;
+    max-height: 2000px;
+  }
+  to {
+    opacity: 0;
+    max-height: 0;
+  }
+}
+
+/* Jarvis floating icon with rotating rings */
+.jarvis-icon-wrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.jarvis-glow {
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(76, 201, 240, 0.25) 0%,
+    transparent 70%
+  );
+  animation: jarvis-pulse 3s ease-in-out infinite;
+}
+
+.jarvis-ring-outer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px dashed #2a6a80;
+  animation: jarvis-spin-cw 12s linear infinite;
+}
+
+.jarvis-ring-inner {
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  border: 3px dashed #1a4a60;
+  animation: jarvis-spin-ccw 8s linear infinite;
+}
+
+.jarvis-icon-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes jarvis-spin-cw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes jarvis-spin-ccw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes jarvis-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Responsive: collapse timeline on mobile */
+@media (max-width: 767px) {
+  .timeline-item.left,
+  .timeline-item.right {
+    left: auto;
+    margin-left: 0;
+  }
+
+  .timeline-item .card-timeline {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    border-left: 3px solid #4cc9f0;
+  }
+
+  .timeline-line {
+    display: none;
+  }
+
+  .dot-left,
+  .dot-right {
+    display: none;
+  }
+
+  .timeline-item.left .card-timeline::before,
+  .timeline-item.right .card-timeline::before {
+    display: none;
+  }
+
+  .timeline-vertical .card {
+    border-left: 3px solid #4cc9f0;
+  }
+}

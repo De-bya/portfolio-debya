@@ -1,0 +1,154 @@
+<canvas id="particle-canvas" class="fixed inset-0 z-0 pointer-events-none"
+></canvas>
+
+<script is:inline>
+  (function () {
+    var animId = null;
+
+    function init() {
+      if (animId) cancelAnimationFrame(animId);
+
+      var canvas = document.getElementById("particle-canvas");
+      if (!canvas) return;
+      var ctx = canvas.getContext("2d");
+
+      var PARTICLE_COUNT = 70;
+      var CONNECTION_DIST = 130;
+      var MOUSE_RADIUS = 180;
+      var BASE_SPEED = 0.03;
+      var PARTICLE_COLOR = "76, 201, 240";
+      var BASE_PARTICLE_OPACITY = 0.45;
+      var BASE_LINE_OPACITY = 0.3;
+      var CURSOR_PARTICLE_OPACITY = 0.65;
+      var CURSOR_LINE_OPACITY = 0.45;
+
+      var mouse = { x: -1000, y: -1000, active: false };
+      var particles = [];
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      function createParticles() {
+        particles = [];
+        for (var i = 0; i < PARTICLE_COUNT; i++) {
+          var angle = Math.random() * Math.PI * 2;
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: Math.cos(angle) * BASE_SPEED,
+            vy: Math.sin(angle) * BASE_SPEED,
+            r: Math.random() * 1.5 + 0.5,
+          });
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (var i = 0; i < particles.length; i++) {
+          var p = particles[i];
+
+          var mouseDist = Infinity;
+          if (mouse.active) {
+            var dx = mouse.x - p.x;
+            var dy = mouse.y - p.y;
+            mouseDist = Math.sqrt(dx * dx + dy * dy);
+            if (mouseDist < MOUSE_RADIUS) {
+              var strength = (1 - mouseDist / MOUSE_RADIUS) * 0.003;
+              p.vx += dx * strength;
+              p.vy += dy * strength;
+            }
+          }
+
+          var speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+          var maxSpeed = mouse.active && mouseDist < MOUSE_RADIUS ? 0.25 : 0.05;
+          if (speed > maxSpeed) {
+            p.vx = (p.vx / speed) * maxSpeed;
+            p.vy = (p.vy / speed) * maxSpeed;
+          }
+
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+          p.x = Math.max(0, Math.min(canvas.width, p.x));
+          p.y = Math.max(0, Math.min(canvas.height, p.y));
+
+          var nearCursor = mouse.active && mouseDist < MOUSE_RADIUS;
+          var cursorFactor = nearCursor ? 1 - mouseDist / MOUSE_RADIUS : 0;
+
+          var dotOpacity =
+            BASE_PARTICLE_OPACITY +
+            cursorFactor * (CURSOR_PARTICLE_OPACITY - BASE_PARTICLE_OPACITY);
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(" + PARTICLE_COLOR + ", " + dotOpacity + ")";
+          ctx.fill();
+
+          for (var j = i + 1; j < particles.length; j++) {
+            var p2 = particles[j];
+            var dx2 = p.x - p2.x;
+            var dy2 = p.y - p2.y;
+            var dist = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+            if (dist < CONNECTION_DIST) {
+              var mouseDist2 = Infinity;
+              if (mouse.active) {
+                var mx = (p.x + p2.x) / 2 - mouse.x;
+                var my = (p.y + p2.y) / 2 - mouse.y;
+                mouseDist2 = Math.sqrt(mx * mx + my * my);
+              }
+              var lineCursorFactor =
+                mouse.active && mouseDist2 < MOUSE_RADIUS
+                  ? 1 - mouseDist2 / MOUSE_RADIUS
+                  : 0;
+              var lineOpacity =
+                (BASE_LINE_OPACITY +
+                  lineCursorFactor *
+                    (CURSOR_LINE_OPACITY - BASE_LINE_OPACITY)) *
+                (1 - dist / CONNECTION_DIST);
+
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle =
+                "rgba(" + PARTICLE_COLOR + ", " + lineOpacity + ")";
+              ctx.lineWidth = 0.5 + lineCursorFactor * 0.5;
+              ctx.stroke();
+            }
+          }
+
+          if (mouse.active && mouseDist < MOUSE_RADIUS) {
+            var opac = CURSOR_LINE_OPACITY * (1 - mouseDist / MOUSE_RADIUS);
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = "rgba(" + PARTICLE_COLOR + ", " + opac + ")";
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+
+        animId = requestAnimationFrame(animate);
+      }
+
+      window.addEventListener("resize", resize);
+      window.addEventListener("mousemove", function (e) {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        mouse.active = true;
+      });
+      window.addEventListener("mouseleave", function () {
+        mouse.active = false;
+      });
+
+      resize();
+      createParticles();
+      animate();
+    }
+
+    document.addEventListener("astro:page-load", init);
+  })();
+</script>

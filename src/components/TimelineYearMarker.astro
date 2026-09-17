@@ -1,0 +1,13 @@
+---
+interface Props {
+  year: number;
+}
+
+const { year } = Astro.props;
+---
+
+<div class="sticky top-20 z-[5] text-center my-5">
+  <span class="bg-dark-bg text-dark-accent px-4 py-1 text-xl font-bold rounded"
+    >{year}</span
+  >
+</div>

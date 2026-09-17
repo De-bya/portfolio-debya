@@ -1,0 +1,17 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "timeout": 10000,
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox"]
+    }
+  },
+  "urls": [
+    "http://localhost:4321/portfolio/",
+    "http://localhost:4321/portfolio/about/",
+    "http://localhost:4321/portfolio/education/",
+    "http://localhost:4321/portfolio/career/",
+    "http://localhost:4321/portfolio/projects/",
+    "http://localhost:4321/portfolio/certificates/"
+  ]
+}

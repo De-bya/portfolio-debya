@@ -1,0 +1,18 @@
+---
+interface Props {
+  side: "left" | "right";
+}
+
+const { side } = Astro.props;
+---
+
+<div class={`timeline-item ${side} relative mb-2.5`}>
+  <span
+    class={`dot-${side} absolute top-[20%] w-3 h-3 bg-dark-accent rounded-full -translate-y-1/2 z-[1]`}
+  ></span>
+  <div
+    class="card-timeline relative w-full max-w-[310px] z-[6] p-5 rounded-lg border border-dark-border bg-dark-card transition-all duration-300 hover:bg-dark-card-hover hover:border-dark-accent/30 opacity-0 translate-y-5 animate-fadeInUp"
+  >
+    <slot />
+  </div>
+</div>
