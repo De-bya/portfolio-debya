@@ -58,7 +58,19 @@ for (const entry of educationEntries) {
                               />
                             )}
                             <span>
-                              {entry.organization}
+                              {entry.organizationUrl ? (
+                                <a
+                                  href={entry.organizationUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  class="underline hover:text-dark-accent"
+                                  onClick={(e: Event) => e.stopPropagation()}
+                                >
+                                  {entry.organization}
+                                </a>
+                              ) : (
+                                entry.organization
+                              )}
                               {entry.dateRange && (
                                 <Fragment>
                                   &nbsp;&middot; {entry.dateRange}
@@ -119,7 +131,18 @@ for (const entry of educationEntries) {
                             />
                           )}
                           <span>
-                            {entry.organization}
+                            {entry.organizationUrl ? (
+                              <a
+                                href={entry.organizationUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="underline hover:text-dark-accent"
+                              >
+                                {entry.organization}
+                              </a>
+                            ) : (
+                              entry.organization
+                            )}
                             {entry.dateRange && (
                               <Fragment>
                                 &nbsp;&middot; {entry.dateRange}
