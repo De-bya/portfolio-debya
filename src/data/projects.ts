@@ -63,6 +63,7 @@ export const projects: Project[] = [
       "Freemium/premium tiers, Firebase authentication, and on-device inference via TensorFlow Lite.",
       "Built with Kotlin, Android, YOLOv8/YOLOv11, PaddleOCR, GPT-4o, TensorFlow Lite, Firebase, and Google Maps APIs.",
     ],
-    websiteUrl: "https://drive.google.com/file/d/1-sQQ7uDNP34f3CI1joapCOv-itMAEVZ4/view?usp=sharing",
+    websiteUrl:
+      "https://drive.google.com/file/d/1-sQQ7uDNP34f3CI1joapCOv-itMAEVZ4/view?usp=sharing",
   },
 ];
