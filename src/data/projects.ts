@@ -12,6 +12,20 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "Food Delivery Data Pipeline",
+    description:
+      "An end-to-end batch data engineering pipeline processing 33.9 million rows of food-delivery data (10M orders, 23M order items, 300K reviews), built by following and extending Darshil Parmar's Zomato AI Data Engineering tutorial, with substantial independent debugging and production-hardening along the way.",
+    bullets: [
+      "Data flows from CSV files in Amazon S3 into Snowflake via a keyless storage integration (IAM role, no stored credentials), then through a medallion architecture (Bronze/Silver/Gold) built entirely in dbt: staging views clean and type the raw data, and mart tables answer specific business questions (revenue by city, restaurant performance, delivery-time percentiles, review insights).",
+      "Used incremental dbt models (MERGE-based, so a rebuild only processes new rows) and a Type-2 SCD snapshot to track restaurant rating history over time, backed by 17 automated data-quality tests (uniqueness, not-null, referential integrity, accepted values, and a full row-count reconciliation between raw and fact tables).",
+      "Added three LLM-powered use cases with OpenAI: an enrichment step that turns free-text reviews into structured JSON (sentiment, score, theme) directly in the warehouse; a RAG chatbot that embeds reviews and answers questions grounded only in the retrieved ones; and a text-to-SQL assistant that translates natural-language questions into warehouse queries, restricted to SELECT-only statements running under a least-privilege role.",
+      "Orchestrated the whole pipeline as a single Airflow DAG in Docker, running daily with explicit task dependencies — if the dbt quality tests fail, the AI enrichment step never runs on unvalidated data.",
+      "Debugged and fixed several real production issues beyond the tutorial: missing GRANT USAGE permissions that would have silently broken the Airflow load step, a Python/dbt version mismatch, a Windows-vs-Linux dbt parsing-cache conflict inside Docker, an aliasing bug in the reconciliation test, and a mismatch between the schema given to the text-to-SQL model and the actual dbt models — then scrubbed AWS account IDs and external IDs from the codebase and git history before publishing.",
+      "Built with Python, AWS S3, Snowflake, dbt, Apache Airflow, Docker, OpenAI, and Streamlit.",
+    ],
+    githubUrl: "https://github.com/De-bya/food-delivery-pipeline",
+  },
+  {
     title: "CROUS Watch",
     description:
       "A Python monitoring tool that watches the French CROUS student housing platform (trouverunlogement.lescrous.fr) for new listings and sends instant push notifications the moment one matching my criteria goes live.",
