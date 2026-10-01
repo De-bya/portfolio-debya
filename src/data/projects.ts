@@ -26,6 +26,20 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/De-bya/food-delivery-pipeline",
   },
   {
+    title: "JobFit Agent",
+    description:
+      "A multi-step RAG agent that analyzes how well a resume matches a job posting — not a generic keyword score, but a requirement-by-requirement breakdown of what's met, what's missing, and how severe each gap actually is. Built as the final project for DataTalksClub's LLM Zoomcamp.",
+    bullets: [
+      "The agent parses the job posting and resume into structured requirements/skills, then reasons through each requirement individually: retrieves relevant context from a skills knowledge base (ESCO + O*NET), classifies the gap severity (Met, Minor, Adjacent, Experience mismatch, Hard filter risk), and generates grounded rewrite suggestions without fabricating skills the candidate doesn't have.",
+      "Compared 4 retrieval strategies (vector, BM25, hybrid, and an advanced HyDE + reranking pipeline) against a 53-question eval set, and 2 prompting strategies scored by an LLM-as-judge — selected hybrid search and a structured, retrieval-grounded prompt based on the results.",
+      "Job postings are ingested via a dlt pipeline (JSearch API) into DuckDB; the knowledge base is indexed in Elasticsearch for hybrid BM25 + dense vector search.",
+      "Built a Streamlit interface and a Grafana monitoring dashboard (7 panels: fit-score distribution, gap-severity breakdown, latency, feedback ratio) backed by Postgres logging — no resume text is ever persisted, only aggregate metrics.",
+      "Fully containerized with Docker Compose (Elasticsearch, Postgres, Grafana, app).",
+      "Built with Python, OpenAI API, Elasticsearch, PostgreSQL, Grafana, Streamlit, and Docker.",
+    ],
+    githubUrl: "https://github.com/De-bya/jobfit-agent",
+  },
+  {
     title: "CROUS Watch",
     description:
       "A Python monitoring tool that watches the French CROUS student housing platform (trouverunlogement.lescrous.fr) for new listings and sends instant push notifications the moment one matching my criteria goes live.",
@@ -49,20 +63,6 @@ export const projects: Project[] = [
       "Built with Python, PyTorch, FastAPI, Docker, and MLflow.",
     ],
     githubUrl: "https://github.com/De-bya/predictive-maintenance-tft-pso",
-  },
-  {
-    title: "JobFit Agent",
-    description:
-      "A multi-step RAG agent that analyzes how well a resume matches a job posting — not a generic keyword score, but a requirement-by-requirement breakdown of what's met, what's missing, and how severe each gap actually is. Built as the final project for DataTalksClub's LLM Zoomcamp.",
-    bullets: [
-      "The agent parses the job posting and resume into structured requirements/skills, then reasons through each requirement individually: retrieves relevant context from a skills knowledge base (ESCO + O*NET), classifies the gap severity (Met, Minor, Adjacent, Experience mismatch, Hard filter risk), and generates grounded rewrite suggestions without fabricating skills the candidate doesn't have.",
-      "Compared 4 retrieval strategies (vector, BM25, hybrid, and an advanced HyDE + reranking pipeline) against a 53-question eval set, and 2 prompting strategies scored by an LLM-as-judge — selected hybrid search and a structured, retrieval-grounded prompt based on the results.",
-      "Job postings are ingested via a dlt pipeline (JSearch API) into DuckDB; the knowledge base is indexed in Elasticsearch for hybrid BM25 + dense vector search.",
-      "Built a Streamlit interface and a Grafana monitoring dashboard (7 panels: fit-score distribution, gap-severity breakdown, latency, feedback ratio) backed by Postgres logging — no resume text is ever persisted, only aggregate metrics.",
-      "Fully containerized with Docker Compose (Elasticsearch, Postgres, Grafana, app).",
-      "Built with Python, OpenAI API, Elasticsearch, PostgreSQL, Grafana, Streamlit, and Docker.",
-    ],
-    githubUrl: "https://github.com/De-bya/jobfit-agent",
   },
   {
     title: "SightSense",
