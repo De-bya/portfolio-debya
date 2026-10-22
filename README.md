@@ -9,6 +9,6 @@ Personal portfolio website, built with [Astro](https://astro.build/) and [Tailwi
 - **Home** — intro and social links
 - **About** — bio, skills, and languages
 - **Education** — academic background
-- **Career** — work experience
-- **Projects** — Predictive Maintenance System, JobFit Agent, SightSense, CROUS Watch
+- **Career** — work experiences
+- **Projects** — Personal and Academic Projects
 - **Certificates** — certifications by year
