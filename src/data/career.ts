@@ -33,8 +33,7 @@ export const careerEntries: CareerEntry[] = [
     title: "Data Engineering Intern",
     organization: "Banque Nationale de Mauritanie (BNM)",
     dateRange: "July 2024 - September 2024",
-    project:
-      "BNM Data Platform — Open-source data warehouse for a bank",
+    project: "BNM Data Platform — Open-source data warehouse for a bank",
     description: [
       "Designed and built a self-hosted data platform that centralizes the core banking system and the mobile banking app into a PostgreSQL warehouse, answering three business questions: loan portfolio risk, branch performance against targets, and digital adoption.",
     ],

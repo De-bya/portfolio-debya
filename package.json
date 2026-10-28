@@ -9,7 +9,7 @@
     "lint": "eslint src/",
     "format:check": "prettier --check src/",
     "format": "prettier --write src/",
-    "check:links": "linkinator http://localhost:4321/portfolio-debya/ --recurse --skip \"researchgate\\.net|linkedin\\.com|medium\\.com\"",
+    "check:links": "linkinator http://localhost:4321/portfolio-debya/ --recurse --skip \"researchgate\\.net|linkedin\\.com|medium\\.com|ensias\\.um5\\.ac\\.ma\"",
     "check:a11y": "pa11y-ci",
     "check:all": "npm run lint && npm run format && npm run build && sh -c 'npm run preview & sleep 5 && npm run check:links && npm run check:a11y; kill $!'"
   },
