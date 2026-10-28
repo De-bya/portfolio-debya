@@ -34,16 +34,17 @@ export const careerEntries: CareerEntry[] = [
     organization: "Banque Nationale de Mauritanie (BNM)",
     dateRange: "July 2024 - September 2024",
     project:
-      "Design and implementation of an ETL system for automating data pipelines into a centralized data warehouse",
+      "BNM Data Platform — Open-source data warehouse for a bank",
     description: [
-      "Designed and built a custom ETL tool for BNM to extract data from multiple OLTP banking systems (MySQL, SQL Server), apply business-specific transformation rules, and load the processed data into a centralized PostgreSQL data warehouse for reporting and decision-making.",
+      "Designed and built a self-hosted data platform that centralizes the core banking system and the mobile banking app into a PostgreSQL warehouse, answering three business questions: loan portfolio risk, branch performance against targets, and digital adoption.",
     ],
     bullets: [
-      "Built the application in Django (learning the framework's MVT pattern, ORM, and templating from scratch in about two weeks) with Python scripts handling the core ETL logic — anonymization, cleaning, and normalization — to meet BNM's compliance and reporting requirements.",
-      "Designed a flexible scheduling system supporting daily, weekly, monthly, and custom ETL runs. Initially evaluated Celery with Redis, but found it too heavy to set up and maintain within the project's timeframe, and switched to Python's lightweight 'schedule' library for a simpler, more reliable solution that supported both scheduled and manual runs.",
-      "Built a Plotly dashboard to track the status and history of ETL executions, giving business teams visibility into pipeline runs without needing to read logs directly.",
-      "Identified NoSQL sources and a more scalable warehouse (Snowflake or BigQuery, as alternatives to PostgreSQL) as directions for future iterations to better handle unstructured data and large-scale performance.",
-      "Built with Python, Django, SQL, MySQL, SQL Server, PostgreSQL, and Plotly.",
+      "Designed a self-hosted bank data warehouse (Docker): incremental replication with Airbyte from the SQL Server core banking system and the MySQL mobile app backend into PostgreSQL, through read-only accounts.",
+      "Layered dbt modeling (staging, intermediate, SCD2 snapshot, star schema with 6 dimensions and 4 fact tables): cleaning of front-office data entry and identification of duplicate customers by national ID number.",
+      "Computed each loan's days past due at every month-end, its classification, and its provisions; built business marts for risk (NPL, PAR30/90), branch performance against targets, and digital adoption.",
+      "49 data-quality tests, including 3 reconciliation tests against the source systems (balances recomputed to the ouguiya across 2.1M transactions); access secured with PostgreSQL roles, with personal data isolated in a restricted schema.",
+      "Nightly orchestration with Airflow and 3 Metabase dashboards (Risk, Finance, Digital) created as code through the API.",
+      "Built with Python, SQL Server, MySQL, Airbyte, PostgreSQL, dbt, Apache Airflow, Metabase, and Docker.",
     ],
   },
   {

@@ -50,20 +50,20 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/De-bya/crous-watch",
   },
-  {
-    title: "Predictive Maintenance System",
-    description:
-      "An end-to-end implementation of a research paper on predictive maintenance for smart manufacturing, combining a Temporal Fusion Transformer with automated hyperparameter tuning and a full MLOps pipeline.",
-    bullets: [
-      "A Temporal Fusion Transformer (TFT) predicts equipment failures from hydraulic sensor data with 96.5% accuracy, using attention to capture long-range dependencies across sensor readings.",
-      "Hyperparameters are automatically tuned with Particle Swarm Optimization (PSO), reaching 99.4% validation accuracy during the search.",
-      "Every experiment is tracked with MLflow (params, metrics, model artifacts), and CUSUM drift detection monitors predictions in production to flag when retraining is needed.",
-      "Added a resilience layer (exponential backoff, SRE-style uptime monitoring, chaos engineering tests) and validated it against sensor dropout, noise injection, and network latency scenarios.",
-      "Served through a FastAPI REST API with a live web dashboard, containerized with Docker and deployed via a GitHub Actions CI/CD pipeline.",
-      "Built with Python, PyTorch, FastAPI, Docker, and MLflow.",
-    ],
-    githubUrl: "https://github.com/De-bya/predictive-maintenance-tft-pso",
-  },
+  // {
+  //   title: "Predictive Maintenance System",
+  //   description:
+  //     "An end-to-end implementation of the research paper \"Smart Manufacturing with MLOps: A Model Management and Automation Framework for Predictive Maintenance\", combining a Temporal Fusion Transformer, Particle Swarm Optimization, and an MLOps pipeline with drift detection and fault tolerance.",
+  //   bullets: [
+  //     "A Temporal Fusion Transformer (TFT) predicts equipment failures from 17 hydraulic sensors (UCI dataset) with 96.5% accuracy, combining an LSTM encoder with multi-head attention to capture long-range dependencies across sensor readings.",
+  //     "Particle Swarm Optimization (PSO) tunes the TFT's learning rate, number of layers, and attention heads, reaching 99.4% validation accuracy during the search.",
+  //     "Every experiment is tracked with MLflow, and CUSUM drift detection triggers automated retraining, with the new model promoted only if it beats the current one and rolled back otherwise.",
+  //     "Built a resilience layer following SRE and Chaos Engineering principles: exponential backoff, availability tracking against a 97.3% SLO, and fault-injection tests (sensor dropout, noise, latency) where the model kept 94% of its accuracy.",
+  //     "Served through a FastAPI REST API that reports latency, throughput, and availability, containerized with Docker and tested with a GitHub Actions CI pipeline.",
+  //     "Built with Python, PyTorch, MLflow, FastAPI, and Docker.",
+  //   ],
+  //   githubUrl: "https://github.com/De-bya/predictive-maintenance-tft-pso",
+  // },
   {
     title: "SightSense",
     description:
